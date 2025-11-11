@@ -11,11 +11,11 @@ const Hero = () => {
           Full-Stack <span className="text-blue-400">Solana Engineer</span> & <br /> Web3 Security Architect
         </h1>
         <p className="mt-6 text-xl text-gray-400">
-          **"I don't just write code; I build an asset."** I specialize in converting complex DeFi and NFT marketplace visions into robust, production-ready solutions on the Solana blockchain, focused on security and capital-efficiency.
+          I don't just write code; I build an asset.I specialize in converting complex DeFi and NFT marketplace visions into robust, production-ready solutions on the Solana blockchain, focused on security and capital-efficiency.
         </p>
         <div className="mt-8 space-x-4">
           <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
-            Let's Schedule a Brief Call 📞
+            Let's Schedule a Brief Call
           </button>
           <a href="#expertise" className="text-blue-400 border border-blue-400 hover:bg-blue-400 hover:text-gray-900 font-bold py-3 px-6 rounded-lg transition duration-300">
             View My Expertise

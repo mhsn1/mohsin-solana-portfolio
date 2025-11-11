@@ -6,7 +6,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         
         {/* Logo/Name */}
-        <div className="text-2xl font-bold text-solana-green">
+        <div className="text-3xl font-bold text-white">
           Mohsin Arif
         </div>
 
