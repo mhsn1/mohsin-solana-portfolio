@@ -1,10 +1,10 @@
-/* /styles/globals.css */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Aapki website ka basic background color */
-body {
-  background-color: #111827; /* Dark Grey/Black */
+/* Tailwind ki processing ko zaroori hai. Koi bhi CSS variable add karein. */
+:root {
+  --primary-color: #9945FF; 
 }
+
+
