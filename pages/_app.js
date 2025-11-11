@@ -1,10 +1,10 @@
-// /pages/_app.js
+// /pages/_app.js (New Code)
 
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
-  // Yahan hum CSS file ko saare components par apply kar rahe hain
-  return <Component {...pageProps} />;
+  // Hum yahan ek 'key' daal rahe hain taake Next.js/Turbopack force ho jaye
+  return <Component {...pageProps} key="app-root-load" />; 
 }
 
 export default MyApp;

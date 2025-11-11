@@ -5,14 +5,20 @@ import Expertise from '../components/Expertise';
 import History from '../components/History';
 import Contact from '../components/Contact';
 
+// FIX: Yeh naya component yahan daalna zaroori hai.
+const DummyStyleFix = () => <div className="hidden bg-gray-900" />;
+
 export default function Home() {
   return (
     // 'bg-gray-900' aur 'text-white' classes yahan apply honi chahiye
     <div className="min-h-screen bg-gray-900 text-white font-sans"> 
       <Header />
       <main className="container mx-auto px-4 py-8">
-        {/* Sabse pehla masla: Yahan image ka Alt text nazar aa raha hai */}
-        <Hero /> 
+        <Hero />
+        
+        {/* FIX: Yeh Dummy component yahan add karna hai */}
+        <DummyStyleFix /> 
+        
         <section id="expertise" className="py-16">
           <Expertise />
         </section>
