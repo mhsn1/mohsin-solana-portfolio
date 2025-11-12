@@ -1,48 +1,46 @@
-// /components/Hero.jsx (Final Code with Calendly Link)
-
 import React from 'react';
 
 const Hero = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between py-24">
-      <div className="md:w-3/5">
-        <span className="text-solana-green text-lg font-mono">Blockchain & Security</span>
+    // FIX 1: Mobile par flex-col (upar-neeche) aur bade screen par flex-row (baghal-baghal)
+    <div className="flex flex-col md:flex-row items-center justify-between py-16 md:py-24"> 
+      
+      {/* Text Content */}
+      <div className="md:w-3/5 order-2 md:order-1 mt-10 md:mt-0 text-center md:text-left"> 
+        <span className="text-solana-green text-lg font-mono block mb-2">Blockchain & Security</span>
         
-        {/* HEADING (Aapke Design aur Upwork profile ke mutabiq) */}
-       <h1 className="text-6xl font-extrabold mt-2 leading-tight">
-  Elite Solana DApp Developer & <br /> <span className="text-blue-400">Web3 Security Consultant</span>
-</h1>
+        {/* Heading Size: Mobile par chota (4xl) aur Desktop par bada (6xl) */}
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-white mb-6">
+          Full-Stack <span className="text-blue-400">Solana Engineer</span> & <br /> Web3 Security Architect
+        </h1>
         
-        <p className="mt-6 text-xl text-gray-400">
-          I don't just write code; I build an asset. I specialize in converting complex DeFi and NFT marketplace visions into robust, production-ready solutions on the Solana blockchain, focused on security and capital-efficiency.
+        <p className="mt-4 text-lg text-gray-400 max-w-lg mx-auto md:mx-0">
+          I don't just write code; I build an asset. I specialize in robust, production-ready solutions on the Solana blockchain, focused on security and capital-efficiency.
         </p>
         
-        <div className="mt-8 space-x-4">
-          
-          {/* CALENDLY LINK BUTTON */}
+        {/* Buttons: Mobile par bhi space-x-4 */}
+        <div className="mt-8 space-x-4 flex justify-center md:justify-start">
           <a 
             href="https://calendly.com/mohsinarif84/discovery-call" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded-lg transition duration-300 text-sm sm:text-base"
           >
-            Let's Schedule a Brief Call
+            Schedule Call
           </a>
-          
-          {/* EXPERTISE LINK */}
-          <a href="#expertise" className="text-blue-400 border border-blue-400 hover:bg-blue-400 hover:text-gray-900 font-bold py-3 px-6 rounded-lg transition duration-300">
-            View My Expertise
+          <a href="/#expertise" className="text-blue-400 border border-blue-400 hover:bg-blue-400 hover:text-gray-900 font-bold py-3 px-5 rounded-lg transition duration-300 text-sm sm:text-base">
+            View Expertise
           </a>
-          
         </div>
       </div>
       
-      {/* IMAGE SECTION */}
-      <div className="md:w-1/4 mt-10 md:mt-0 flex justify-center">
+      {/* Image Section */}
+      <div className="md:w-1/4 order-1 md:order-2 flex justify-center">
+        {/* Image Size: Mobile par bhi theek lagna chahiye */}
         <img 
           src="/mohsin-arif-photo.jpg" 
           alt="Mohsin A. Professional Portrait" 
-          className="rounded-full w-64 h-64 object-cover border-4 border-solana-green shadow-lg"
+          className="rounded-full w-56 h-56 sm:w-64 sm:h-64 object-cover border-4 border-solana-green shadow-lg"
         />
       </div>
     </div>
