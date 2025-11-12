@@ -30,7 +30,7 @@ const Contact = () => {
         {/* Primary CTA (Calendly) */}
         <a href={links.calendly} target="_blank" rel="noopener noreferrer" 
            className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full transition duration-300 text-xl shadow-2xl hover:shadow-blue-500/50 transform hover:scale-105">
-          Schedule Your Discovery Call Now 🚀
+          Schedule Your Discovery Call Now
         </a>
 
         {/* Secondary Links for Authority */}
