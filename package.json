@@ -9,11 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1"
   },
- "devDependencies": {
+  "devDependencies": {
     "autoprefixer": "^10.4.19",
     "eslint": "8.49.0",
     "eslint-config-next": "13.5.6",

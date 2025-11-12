@@ -3,8 +3,20 @@
 @tailwind utilities;
 
 /* Tailwind ki processing ko zaroori hai. Koi bhi CSS variable add karein. */
-:root {
-  --primary-color: #9945FF; 
+/* /styles/globals.css کے آخِر میں یہ کوڈ ADD کریں */
+
+.article-custom p {
+    /* Paragraph ke beech zyada space (Double Spacing jaisa look) */
+    margin-bottom: 1.5em !important; 
+    line-height: 1.7; /* Line height zyada ki gayi */
 }
 
-
+.article-custom h2,
+.article-custom h3 {
+    /* Headings ko pyara aur bold banane ke liye */
+    color: #FFF; 
+    font-weight: 800 !important; /* Extra Bold */
+    border-bottom: 1px solid rgba(153, 69, 255, 0.3); /* Halka Solana Green line */
+    padding-bottom: 0.3em;
+    margin-top: 2em !important; /* Headings ke upar zyada space */
+}
