@@ -1,12 +1,11 @@
 import { getSortedPostsData } from '../lib/posts';
 
 // Base URL (Apni live website ka URL yahan daalein)
-const BASE_URL = 'https://www.mhxmllc.com';
+const BASE_URL = 'https://www.mhxmllc.com'; 
 
-// Yeh function Next.js ki API route ki tarah kaam karta hai
-function generateSiteMap(posts) {
-  return `<?xml version="1.0" encoding="UTF-8"?>
-   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+// Content sirf URLs ka
+function generateSiteMapContent(posts) {
+  return `
      <url>
        <loc>${BASE_URL}</loc>
        <changefreq>weekly</changefreq>
@@ -28,25 +27,36 @@ function generateSiteMap(posts) {
      `;
        })
        .join('')}
-   </urlset>
  `;
 }
 
 function SiteMap() {
-  // getServerSideProps() ya getStaticProps() istemaal na karein.
+  return null; 
 }
 
-// Next.js mein yeh function build time par chalta hai
 export async function getServerSideProps({ res }) {
-  const posts = getSortedPostsData();
+  let posts = [];
+  try {
+    posts = getSortedPostsData();
+  } catch (error) {
+    console.error("Error fetching posts data for sitemap:", error);
+    posts = []; 
+  }
 
-  // XML content generate karein
-  const sitemap = generateSiteMap(posts);
+  const sitemapContent = generateSiteMapContent(posts);
+  
+  // FINAL ASSEMBLY: Saaf XML string yahan banaya gaya hai.
+  const finalSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   ${sitemapContent}
+   </urlset>
+  `;
 
-  // Response ko XML content type ke saath bhejhein
+  // Set Headers aur Response ko seedha likhein
   res.setHeader('Content-Type', 'text/xml');
-  res.write(sitemap);
-  res.end();
+  res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate');
+  res.write(finalSitemap.trim());
+  res.end(); 
 
   return {
     props: {},
