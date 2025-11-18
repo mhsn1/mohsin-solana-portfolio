@@ -1,10 +1,10 @@
 import { getSortedPostsData } from '../lib/posts';
 
-// Base URL (Apni live website ka URL yahan daalein)
-const BASE_URL = 'https://www.mhxmllc.com'; 
+// Base URL ko dynamic banayenge (Hamein iski zarurat getServerSideProps mein padegi)
+// const BASE_URL = 'https://www.mhxmllc.com'; // Ab iski jagah naya logic aayega
 
 // Content sirf URLs ka
-function generateSiteMapContent(posts) {
+function generateSiteMapContent(BASE_URL, posts) { // BASE_URL ko argument banaya
   return `
      <url>
        <loc>${BASE_URL}</loc>
@@ -34,7 +34,13 @@ function SiteMap() {
   return null; 
 }
 
-export async function getServerSideProps({ res }) {
+export async function getServerSideProps({ req, res }) { // req object yahan zaroori hai
+  
+  // 🛑 FIX: Yahan Base URL ko determine kiya gaya hai
+  const currentDomain = process.env.NODE_ENV === 'production'
+    ? 'https://www.mhxmllc.com'
+    : `http://${req.headers.host}`; // Localhost par chalao
+    
   let posts = [];
   try {
     posts = getSortedPostsData();
@@ -43,10 +49,14 @@ export async function getServerSideProps({ res }) {
     posts = []; 
   }
 
-  const sitemapContent = generateSiteMapContent(posts);
+  // Ab currentDomain ko pass karein
+  const sitemapContent = generateSiteMapContent(currentDomain, posts);
   
-  // FINAL ASSEMBLY: Saaf XML string yahan banaya gaya hai.
+  // FINAL ASSEMBLY: XSLT link mein bhi currentDomain use hoga.
+  const xslLink = `<?xml-stylesheet type="text/xsl" href="${currentDomain}/sitemap-style.xsl"?>`;
+
   const finalSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+   ${xslLink}  <!-- XSLT link yahan hai -->
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    ${sitemapContent}
    </urlset>
