@@ -1,4 +1,7 @@
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 import '../styles/globals.css';
+
 import { useRouter } from 'next/router';
 
 function MyApp({ Component, pageProps }) {
