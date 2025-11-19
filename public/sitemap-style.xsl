@@ -50,8 +50,8 @@
                 </style>
             </head>
             <body>
-                <h1>🌐 XML Sitemap: <xsl:value-of select="sitemap:urlset/sitemap:url[1]/sitemap:loc"/></h1>
-                <p>Yeh sitemap aapki website ke saare pages ko Search Engines (jaise Google) ke liye list karta hai.</p>
+                <h1>🌐Sitemap: <xsl:value-of select="sitemap:urlset/sitemap:url[1]/sitemap:loc"/></h1>
+                
                 <table>
                     <tr>
                         <th>URL Location</th>
