@@ -1,47 +1,78 @@
-import Head from 'next/head'; // Head component ko import karna zaroori hai
+import React from 'react';
+import Head from 'next/head'; 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Hero from '../components/Hero';
-import Expertise from '../components/Expertise';
-import History from '../components/History';
 import Contact from '../components/Contact';
+import GridBackground from '../components/GridBackground';
+import OurClients from '../components/OurClients';
+import AboutUs from '../components/AboutUs';
+import Testimonials from '../components/Testimonials';
+import { useTheme } from '../components/ThemeContext';
 
-const DummyStyleFix = () => <div className="hidden bg-gray-900" />;
+// ✅ FIX: ProcessTimeline ko import kiya gaya
+import ProcessTimeline from '../components/ProcessTimeline'; 
+
+const DummyStyleFix = () => <div className="hidden bg-white bg-gray-900 text-black text-white border-gray-200 border-gray-700" />;
 
 export default function Home() {
+  const { theme } = useTheme();
+
   return (
-    <div className="min-h-screen bg-gray-900 text-white font-sans">
+    <div className={`min-h-screen font-sans transition-colors duration-500 ${
+      theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'
+    }`}>
       <Head>
-        {/* FIX 1: SEO Title aur Description (Search result mein dikhega) */}
-        <title>Mohsin Arif | Elite Solana Engineer & Web3 Security Architect</title>
-        <meta name="description" content="Full-Stack Solana DApp Developer specializing in Rust, Anchor, and Web3 Security Audits. Building robust, high-throughput systems on the Solana blockchain." />
-        
-        {/* FIX 2: Favicon (Browser Tab ka Logo) */}
+        <title>Mohsin Arif | Block Chain and Security Audit</title>
+        <meta name="description" content="Full-Stack Solana DApp Developer." />
         <link rel="icon" href="/mohsin-arif-photo.jpg" type="image/jpeg" sizes="32x32" />
-        
-        {/* FIX 3: Open Graph Tags (Jab aap link share karein) */}
-        <meta property="og:title" content="Elite Solana DApp Developer | Mohsin Arif" />
-        <meta property="og:description" content="Rust, Anchor, Next.js Expert. Architecting secure DeFi solutions." />
-        <meta property="og:image" content="/mohsin-arif-photo.jpg" />
-        <meta property="og:url" content="https://www.mhxmllc.com/" />
       </Head>
+      
       <Header />
-      <main className="container mx-auto px-4 py-8">
-        <Hero />
-        <DummyStyleFix />
+
+      <div className="relative w-full overflow-hidden">
         
-        <section id="expertise" className="py-16">
-          <Expertise />
+        <div className="absolute inset-0 z-0">
+          <GridBackground />
+        </div>
+
+        <div className="relative z-10">
+           <Hero />
+        </div>
+
+        <div className="relative z-20">
+            <OurClients />
+        </div>
+
+      </div>
+      
+      <DummyStyleFix />
+      
+      <main className="container mx-auto px-4 py-8 relative z-10">
+        
+        {/* ✅ FIX: AuditingProcess ko ProcessTimeline se replace kiya */}
+        <section id="auditing-process" className="py-16">
+           <ProcessTimeline />
         </section>
-        <hr className="border-gray-700 my-8" />
-        <section id="history" className="py-16">
-          <History />
+
+        <hr className={`my-8 transition-colors duration-300 ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`} />
+        
+        <section id="about-us" className="py-16">
+          <AboutUs />
         </section>
-        <hr className="border-gray-700 my-8" />
+        
+        {/* TESTIMONIALS SECTION */}
+        <section id="testimonials">
+            <Testimonials />
+        </section>
+        
+        <hr className={`my-8 transition-colors duration-300 ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`} />
+        
         <section id="contact" className="py-16">
           <Contact />
         </section>
       </main>
+      
       <Footer />
     </div>
   );

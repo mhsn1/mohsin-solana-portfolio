@@ -1,8 +1,9 @@
-// /components/Contact.jsx (Final Code with Correct Image Path)
-
 import React from 'react';
+import { useTheme } from './ThemeContext'; // ✅ Theme Context Import
 
 const Contact = () => {
+  const { theme } = useTheme(); // ✅ Get Theme State
+
   const links = {
     // CALENDLY (Appointment Scheduling)
     calendly: "https://calendly.com/mohsinarif84/discovery-call", 
@@ -11,19 +12,28 @@ const Contact = () => {
     // GITHUB (Code Authority)
     github: "https://github.com/mhsn1/Profile", 
     // UPWORK (Verified Experience)
-    upwork: "https://www.upwork.com/freelancers/~0164fcaefd2e237646?s=1517518458463281152", // ⬅️ Zaroor badlein!
+    upwork: "https://www.upwork.com/freelancers/~0164fcaefd2e237646?s=1517518458463281152", 
   };
 
+  // ✅ Dynamic Theme Classes
+  // Light Mode mein background light white hoga
+  const sectionBg = theme === 'dark' ? 'bg-gray-900' : 'bg-white-50'; 
+  const headingColor = theme === 'dark' ? 'text-white' : 'text-gray-900';
+  const subTextColor = theme === 'dark' ? 'text-gray-400' : 'text-gray-600';
+  const dividerColor = theme === 'dark' ? 'border-gray-700' : 'border-gray-300';
+  const connectTextColor = theme === 'dark' ? 'text-gray-300' : 'text-gray-700';
+
   return (
-    <div id="contact" className="py-24 md:py-32 bg-gray-900">
+    // ✅ Dynamic Background
+    <div id="contact" className={`py-24 md:py-32 transition-colors duration-500 ${sectionBg}`}>
       <div className="container mx-auto px-4 text-center">
         
-        {/* SEO-Rich Heading */}
-        <h2 className="text-5xl font-extrabold text-white mb-6">
-          Ready to Build the Next <span className="text-solana-green">Web3 Innovation</span>?
+        {/* Heading */}
+        <h2 className={`text-5xl font-extrabold mb-6 ${headingColor}`}>
+          Ready to Build the Next <span className="text-blue-500">Web3 Innovation</span>?
         </h2>
         
-        <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+        <p className={`text-xl mb-10 max-w-2xl mx-auto ${subTextColor}`}>
           Let's connect to discuss your project. I specialize in secure Solana DApp architecture and smart contract development.
         </p>
 
@@ -33,32 +43,8 @@ const Contact = () => {
           Schedule Your Discovery Call Now
         </a>
 
-        {/* Secondary Links for Authority */}
-        <div className="mt-16 pt-8 border-t border-gray-700 max-w-4xl mx-auto">
-          <h3 className="text-2xl font-semibold text-gray-300 mb-6">
-            Connect & View My Credentials
-          </h3>
-          <div className="flex justify-center space-x-12">
-            
-            {/* GitHub - IMAGE LOGO (Path Fixed to Public, Size w-8 h-8) */}
-            <a href={links.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition duration-300 flex items-center space-x-2">
-              <img src="/github-logo.png" alt="GitHub Logo" className="w-8 h-8" /> 
-              <span className="text-lg">GitHub</span>
-            </a>
-
-            {/* Email - IMAGE LOGO */}
-            <a href={`mailto:${links.email}`} className="text-gray-400 hover:text-white transition duration-300 flex items-center space-x-2">
-              <img src="/email-logo.png" alt="Email Logo" className="w-8 h-8" /> 
-              <span className="text-lg">Email</span>
-            </a>
-            
-            {/* Upwork - IMAGE LOGO */}
-            <a href={links.upwork} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition duration-300 flex items-center space-x-2">
-              <img src="/upwork-logo.png" alt="Upwork Logo" className="w-8 h-8" /> 
-              <span className="text-lg">Upwork</span>
-            </a>
-          </div>
-        </div>
+       
+          
       </div>
     </div>
   );

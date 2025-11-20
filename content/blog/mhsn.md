@@ -1,5 +1,10 @@
 ---
-title: "Case Study: Architecting Trust – Mitigating Critical Exploits in a Solana Escrow Program" date: "2025-11-01" category: "Security Audits" author: "Mohsin Arif" keywords: "Solana Escrow Audit, Anchor Security, DeFi Exploit Mitigation, Rust Smart Contract" excerpt: "A deep dive into how I implemented strict CPI validation and non-custodial design using Rust and Anchor to build a truly secure, high-throughput Solana Escrow system, eliminating common DeFi risks."
+title: "mhsn"
+date: "2025-12-01"
+category: "Smart Contracts"
+author: "Mohsin Arif"
+keywords: "Solana Escrow Audit, Anchor Security, DeFi Exploit Mitigation, Rust Smart Contract"
+excerpt: "A deep dive into how I implemented strict CPI validation and non-custodial design using Rust and Anchor to build a truly secure, high-throughput Solana Escrow system, eliminating common DeFi risks."
 ---
 
 # Case Study: Architecting Trust in a Solana Escrow System

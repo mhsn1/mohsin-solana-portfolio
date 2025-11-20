@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,500,700&subset=latin-ext');
+
+.news-slider-wrapper {
+  width: 100%;
+  position: relative;
+  padding: 20px 0 60px 0;
+  font-family: 'Quicksand', sans-serif;
+  overflow: hidden; 
+  perspective: 1000px;
+}
+
+/* --- White Box (Card Background) --- */
+.item-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 480px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 6px 26px 6px rgba(0,0,0,0.25);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Light Mode mein Card Box ka Shadow thoda soft */
+.light-mode .item-bg {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border: 1px solid #e5e7eb;
+}
+
+.item-bg.active {
+  opacity: 1;
+}
+
+.news-slider {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  height: 500px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Slider Item */
+.news-slider__item {
+  width: 350px;
+  height: 480px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 15px;
+  transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* --- TEXT COLORS FIX --- */
+
+/* Default (Dark Mode) - Inactive items are White */
+.news__item {
+  padding: 40px;
+  color: #fff; /* Dark mode default */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+  z-index: 2;
+}
+
+/* ✅ LIGHT MODE FIX: Inactive items Black honge */
+.light-mode .news__item {
+  color: #1f2937; /* Gray-800 */
+}
+
+/* Active Card Text (Always Dark because card bg is White) */
+.news-slider__item.active .news__item {
+  color: #222 !important;
+}
+.light-mode .news-slider__item.active .news__item {
+  color: #000 !important;
+}
+
+/* Elements Opacity */
+.news-slider__item.active .news-date,
+.news-slider__item.active .news__title,
+.news-slider__item.active .news__txt {
+  opacity: 1;
+}
+
+/* Date Section */
+.news-date {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(255,255,255,0.2);
+  display: inline-block;
+  opacity: 0.7;
+  transition: all 0.3s;
+}
+
+/* Light Mode Date Border */
+.light-mode .news-date {
+  border-bottom: 2px solid rgba(0,0,0,0.1);
+}
+
+.news-slider__item.active .news-date {
+  border-color: rgba(0,0,0,0.1);
+}
+
+.news-date__title {
+  display: block;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.news-date__txt {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Title */
+.news__title {
+  font-size: 24px;
+  font-weight: 700;
+  opacity: 0.9;
+  margin-bottom: 15px;
+  line-height: 1.3;
+}
+
+/* Text */
+.news__txt {
+  font-size: 15px;
+  opacity: 0.7;
+  line-height: 1.6;
+  margin-bottom: auto; 
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+/* Button */
+.news__btn {
+  margin-top: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s;
+  color: #0E5DC4;
+}
+.news-slider__item.active .news__btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Navigation Arrows */
+.news-slider__arrows {
+  position: absolute;
+  bottom: -20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 20;
+}
+
+@media screen and (min-width: 768px) {
+  .news-slider__arrows {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    justify-content: space-between;
+    width: 110%;
+    left: -5%;
+    pointer-events: none;
+  }
+  .news-slider__arrow {
+    pointer-events: auto;
+  }
+}
+
+.news-slider__arrow {
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+  color: #222;
+  z-index: 30;
+}
+
+.light-mode .news-slider__arrow {
+  background: #f3f4f6;
+  color: #000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.news-slider__arrow:hover {
+  transform: scale(1.1);
+}

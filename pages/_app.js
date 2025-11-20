@@ -1,19 +1,17 @@
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react";
 import '../styles/globals.css';
-
-import { useRouter } from 'next/router';
+import '../styles/BlogSlider.css';
+// ✅ Theme Provider Import
+import { ThemeProvider } from '../components/ThemeContext';
 
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
-  
-  // FIX: Agar request '/sitemap.xml' ya '/sitemap.xml/' ke liye hai, 
-  // toh koi component render mat karo (null return karo)
-  if (router.pathname === '/sitemap.xml' || router.pathname === '/sitemap.xml/') {
-    return null;
-  }
-
-  return <Component {...pageProps} />;
+  return (
+    // ✅ Poori App ko ThemeProvider se wrap kiya
+    <ThemeProvider>
+      <Component {...pageProps} />
+      <Analytics />
+    </ThemeProvider>
+  );
 }
 
 export default MyApp;
