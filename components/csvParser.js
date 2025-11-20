@@ -30,7 +30,6 @@ export const parseCsv = (text) => {
     let item = {};
     headers.forEach((header, index) => { if(header) item[header] = values[index] || ''; });
     
-    // Robust check for Title
     const title = item.Title || item.Titless || item.title;
     if (title || item.Client_Name) {
         item.Title = title; 
