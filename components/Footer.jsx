@@ -5,7 +5,7 @@ const Footer = () => {
   const { theme } = useTheme();
 
   // Dynamic Theme Classes
-  const footerBg = theme === 'dark' ? 'bg-gray-800' : 'bg-white-100';
+  const footerBg = theme === 'dark' ? 'bg-white-800' : 'bg-white-100';
   const borderColor = theme === 'dark' ? 'border-gray-700' : 'border-gray-300';
   const textColor = theme === 'dark' ? 'text-gray-400' : 'text-gray-600';
   const headingColor = theme === 'dark' ? 'text-white' : 'text-gray-900';
@@ -42,19 +42,20 @@ const Footer = () => {
             <h3 className={`text-lg font-bold mb-4 ${headingColor}`}>Company</h3>
             <ul className={`space-y-2 text-sm ${textColor}`}>
               <li><a href="/#about-us" className={hoverColor}>About Us</a></li>
-              <li><a href="#" className={hoverColor}>Terms & Privacy</a></li>
-              {/* Core Values Link */}
+              {/* ✅ Link to Terms Page */}
+              <li><a href="/terms" className={hoverColor}>Terms & Privacy</a></li>
+              {/* ✅ Link to Core Values Page */}
               <li><a href="/core-values" className={hoverColor}>Core Values</a></li>
             </ul>
           </div>
 
-          {/* Column 4: Social & Testimonials */}
+          {/* Column 4: Proof & Links */}
           <div>
             <h3 className={`text-lg font-bold mb-4 ${headingColor}`}>Proof & Links</h3>
             <ul className={`space-y-2 text-sm ${textColor}`}>
               <li><a href="/#testimonials" className={hoverColor}>Testimonials</a></li>
               <li><a href="https://github.com/mhsn1/Profile" target="_blank" rel="noopener noreferrer" className={hoverColor}>GitHub</a></li>
-              {/* ❌ Upwork link yahan se hata diya gaya hai */}
+              {/* Upwork link hata diya gaya hai */}
             </ul>
           </div>
 
