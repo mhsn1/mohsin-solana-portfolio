@@ -28,7 +28,7 @@ const testimonialsData = [
 const Testimonials = () => {
   const { theme } = useTheme();
   // Dynamic Theme Classes
-  const sectionBg = theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'; // Light theme ko bhi thoda subtle background diya
+  const sectionBg = theme === 'dark' ? 'bg-gray-900' : 'bg-white-50'; // Light theme ko bhi thoda subtle background diya
   const headingColor = theme === 'dark' ? 'text-white' : 'text-gray-900';
   const cardBg = theme === 'dark' 
     ? 'bg-gray-800/70 border border-gray-700 hover:border-blue-500/50 shadow-2xl shadow-blue-900/20'
