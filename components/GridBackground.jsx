@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 const GridBackground = () => {
   const [gridCells, setGridCells] = useState([]);
   
-  // ✅ COLS=30 (Width ke liye theek hai)
-  // ✅ ROWS=40 (Height barha di kyunke ab ye 2 sections cover karega)
   const COLS = 50; 
   const ROWS = 32;  
 
@@ -19,9 +17,11 @@ const GridBackground = () => {
   }, []);
 
   return (
-    // Absolute inset-0 ensures it covers the full parent container
-    <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-auto z-0">
-      <div className="custom-grid" style={{ '--cols': COLS, '--rows': ROWS }}>
+    <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">  {/* ← Change 1 */}
+      <div 
+        className="custom-grid" 
+        style={{ '--cols': COLS, '--rows': ROWS }}
+      >
         {gridCells.map((cell) => (
           <div
             key={cell.id}
@@ -37,7 +37,7 @@ const GridBackground = () => {
         ))}
       </div>
 
-      <style>{`
+      <style jsx>{`                                         {/* ← Change 2: <style jsx> */}
         .custom-grid {
           display: grid;
           grid-template-columns: repeat(var(--cols), 1fr);
@@ -72,7 +72,7 @@ const GridBackground = () => {
         @media (max-width: 768px) {
           .custom-grid {
             grid-template-columns: repeat(10, 1fr);
-            grid-template-rows: repeat(30, 1fr); /* Mobile par aur zyada rows */
+            grid-template-rows: repeat(30, 1fr);
           }
         }
       `}</style>

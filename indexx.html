@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #1a1c2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        
+        #game-container {
+            text-align: center;
+            color: white;
+        }
+        
+        #minesweeper {
+            border: 2px solid #8257e6;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        #controls {
+            margin: 20px 0;
+        }
+        
+        button {
+            background: #8257e6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            background: #6b46c1;
+        }
+        
+        #instructions {
+            margin-top: 20px;
+            color: #a0a0a0;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <h1>Bugsweeper</h1>
+        <canvas id="minesweeper" width="480" height="480"></canvas>
+        <div id="controls">
+            <button id="autosolve">New Game</button>
+        </div>
+        <div id="instructions">
+            <p><strong>How to Play:</strong></p>
+            <p>Left Click: Open Box</p>
+            <p>Right Click: Mark Flag</p>
+            <p>Find all the bugs without triggering them!</p>
+        </div>
+    </div>
+
+    <script>
+        // Yahan upper wala Bugsweeper class code paste karo
+    </script>
+</body>
+</html>

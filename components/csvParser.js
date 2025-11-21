@@ -21,18 +21,33 @@ export const parseCsv = (text) => {
     return result;
   };
 
+  // Headers ko parse karna aur spaces ko underscore se replace karna
   const headers = parseCSVLine(lines[0]).map(h => h.trim().replace(/ /g, '_'));
   const data = [];
 
   for (let i = 1; i < lines.length; i++) {
     const values = parseCSVLine(lines[i]);
     if (values.length === 0 || values.every(v => !v)) continue;
-    let item = {};
-    headers.forEach((header, index) => { if(header) item[header] = values[index] || ''; });
     
-    const title = item.Title || item.Titless || item.title;
-    if (title || item.Client_Name) {
-        item.Title = title; 
+    let item = {};
+    headers.forEach((header, index) => { 
+        if(header) {
+            // Hum Backticks ka istemal kar rahe hain kyunki headers mein special character (&) hai
+            item[header] = values[index] || ''; 
+        }
+    });
+    
+    // 🛑 FIXED FILTERING LOGIC 🛑
+    // Ab hum Title/Client_Name ki hardcoded keys ki bajaye,
+    // yeh check kar rahe hain ki row mein koi bhi value maujood hai ya nahi (taake data reject na ho).
+    const hasContent = Object.values(item).some(value => value && value.trim() !== '');
+
+    if (hasContent) {
+        // Option 1: Aapke naye column names (Identity & Origin / Inherent Flaw) ko Title/ClientName se map kar dein
+        item.Title = item['Identity_&_Origin']; 
+        item.Client_Name = item['Inherent_Flaw'];
+        
+        // Option 2: Agar kisi bhi value mein data hai, to us row ko push kar dein.
         data.push(item);
     }
   }
